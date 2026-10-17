@@ -1,10 +1,10 @@
 #define PUL 2
 #define DIR 8
 
-#define STEPS 200          // zgodnie z ustawieniem DM556 (impulsów na obrót)
+#define STEPS 400          // zgodnie z ustawieniem DM556 (impulsów na obrót)
 #define PULSE_US 5         // szerokość impulsu
 #define START_DELAY 1500   // µs przerwy między krokami na starcie
-#define MIN_DELAY 500      // µs przerwy przy pełnej prędkości (dostrój)
+#define MIN_DELAY 350      // µs przerwy przy pełnej prędkości (dostrój)
 #define RAMP_STEPS 15      // ile kroków trwa rozpędzanie / hamowanie
 
 void setup() {
@@ -15,11 +15,16 @@ void setup() {
   pinMode(PUL, OUTPUT);
   pinMode(DIR, OUTPUT);
 
-  delay(500);
+  delay(2500);
 }
 
 void loop() {
+  unsigned long StartTime = micros();
   motor(random(1, 4));
+  unsigned long EndTime = micros();
+  unsigned long ElapsedTime = EndTime - StartTime;
+  Serial.println(ElapsedTime);
+
   delay(2500);
 }
 
