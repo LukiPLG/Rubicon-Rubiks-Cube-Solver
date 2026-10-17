@@ -3,11 +3,12 @@
 
 #define STEPS 400          // zgodnie z ustawieniem DM556 (impulsów na obrót)
 #define PULSE_US 5         // szerokość impulsu
-#define START_DELAY 1500   // µs przerwy między krokami na starcie
+#define START_DELAY 500   // µs przerwy między krokami na starcie
 #define MIN_DELAY 350      // µs przerwy przy pełnej prędkości (dostrój)
 #define RAMP_STEPS 15      // ile kroków trwa rozpędzanie / hamowanie
-
+// 400 5 1500 350 15 - stabilne początkowe wartości
 void setup() {
+  Serial.begin(115200);
   randomSeed(analogRead(A0));
 
   digitalWrite(PUL, HIGH);
@@ -19,9 +20,9 @@ void setup() {
 }
 
 void loop() {
-  unsigned long StartTime = micros();
+  unsigned long StartTime = millis();
   motor(random(1, 4));
-  unsigned long EndTime = micros();
+  unsigned long EndTime = millis();
   unsigned long ElapsedTime = EndTime - StartTime;
   Serial.println(ElapsedTime);
 
