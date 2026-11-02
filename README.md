@@ -4,3 +4,5 @@ Przekroczenie Rubikonu było jednoznaczne z zakończeniem zmagań z kostką Rubi
 
 
 ![Eksplozja](Assets/Explosion.gif)
+
+![Render](Assets/render.PNG)
